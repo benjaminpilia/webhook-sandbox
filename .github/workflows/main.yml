@@ -1,0 +1,17 @@
+name: Main
+
+on:
+  push:
+    branches: [ main ]
+
+permissions: {}
+
+jobs:
+  tests:
+    name: Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Pass or fail according to the outcome file
+        run: test "$(cat outcome)" = pass
